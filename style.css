@@ -1,0 +1,10 @@
+.square {
+    flex: 1 1;
+    border: 1px solid black;
+}
+
+.grid {
+    display: flex;
+    height: 900px;
+    width: 900px;
+}
