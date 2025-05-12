@@ -1,8 +1,10 @@
 
 const grid = document.querySelector(".grid");
-
 const size = 16;
-const gridSize = 900;
+const gridSize = 800;
+const reset = document.querySelector(".reset");
+
+reset.addEventListener("click", () => resetGrid());
 
 populate(size);
 
@@ -19,4 +21,16 @@ function populate(size) {
         }
         grid.appendChild(column);
     }
+}
+
+function resetGrid() {
+    let newSize = 0;
+    while (true) {
+        newSize = prompt("Please enter number of squares per side: ");
+        if (newSize > 1 && newSize < 101) {
+            break;
+        }
+    }
+    grid.innerHTML = '';
+    populate(newSize);
 }
