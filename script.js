@@ -3,8 +3,13 @@ const grid = document.querySelector(".grid");
 const size = 16;
 const gridSize = 800;
 const reset = document.querySelector(".reset");
+const randomise = document.querySelector(".randomise");
+let rainbow = false;
 
 reset.addEventListener("click", () => resetGrid());
+randomise.addEventListener("click", () => {
+    rainbow = !rainbow;
+})
 
 populate(size);
 
@@ -24,8 +29,7 @@ function populate(size) {
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => 
         square.addEventListener("mouseover", () => {
-        console.log("hi");
-        square.style.backgroundColor = 'black';
+            colour(square, rainbow);
     }))
 }
 
@@ -40,5 +44,22 @@ function resetGrid() {
     if (newSize != null) {
         grid.innerHTML = '';
         populate(newSize);
+    }
+}
+
+function colour(square, rainbow) {
+    if (!rainbow) {
+        square.style.backgroundColor = 'black';
+    } else {
+        console.log("hi");
+        const r = getRandomRGB();
+        const g = getRandomRGB();
+        const b = getRandomRGB();
+        const rgb = `rgb(${r} ${g} ${b})`;
+        square.style.backgroundColor = rgb;
+    }
+
+    function getRandomRGB() {
+        return Math.random() * (255 - 0) + 0;
     }
 }
