@@ -51,7 +51,6 @@ function colour(square, rainbow) {
     if (!rainbow) {
         square.style.backgroundColor = 'black';
     } else {
-        console.log("hi");
         const r = getRandomRGB();
         const g = getRandomRGB();
         const b = getRandomRGB();
