@@ -21,16 +21,24 @@ function populate(size) {
         }
         grid.appendChild(column);
     }
+    const squares = document.querySelectorAll(".square");
+    squares.forEach(square => 
+        square.addEventListener("mouseover", () => {
+        console.log("hi");
+        square.style.backgroundColor = 'black';
+    }))
 }
 
 function resetGrid() {
     let newSize = 0;
     while (true) {
         newSize = prompt("Please enter number of squares per side: ");
-        if (newSize > 1 && newSize < 101) {
+        if (newSize > 1 && newSize < 101 || newSize == null) {
             break;
         }
     }
-    grid.innerHTML = '';
-    populate(newSize);
+    if (newSize != null) {
+        grid.innerHTML = '';
+        populate(newSize);
+    }
 }
